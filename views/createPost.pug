@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  header
+    #title
+      h1
+      a(href='/') flo app
+    nav
+      h2
+      a(href='/log-in') Log-in
+      h2
+      a(href='/sign-up') Sign-Up
+
+
+    .formContainer 
+      h1  Create a post
+      form(method="post")
+
+      label(for="title") 
+      input(type="text" name="title" id="title" placeholder="title") 
+
+      label(for="content") 
+      input(type="text" id="content" name="content" placeholder="content")
+
+
