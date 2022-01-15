@@ -19,7 +19,7 @@ block content
     form(method="post")
      
       label(for="name") 
-      input(type="text" placeholder="complete name" id="name")
+      input(type="text" placeholder="complete name" id="name" name="name")
       
       label(for="email") 
       input(type="mail" id="email" name="email" placeholder="introduce your email")
@@ -32,6 +32,13 @@ block content
       
       label(for="confpassword") 
       input(type="password" name="confpassword" id="confpassword" placeholder="confirm your password")
+
+      input(type="file" name="profilePhoto")
+      input(type='submit' value='OK')
+
+      if errors 
+        for error in errors 
+          p=error.msg
 
       
 
