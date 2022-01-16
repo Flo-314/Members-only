@@ -12,6 +12,7 @@ let connection = DB.connection()
 const session = require("express-session");
 const passport = require("passport");
 const pasportStrat = require("./controllers/pasport")
+var flash = require('connect-flash');
 require("dotenv").config();
 
 
@@ -29,6 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
+app.use(flash());
 
 
 

@@ -9,19 +9,19 @@ exports.index = (req, res, next) => {
 exports.post = [
   body("name", "MIN FULL NAME LENGTH IS 4.")
     .trim()
-    .isLength({ min: 4 })
+    .isLength({ max: 50,min: 4 })
     .escape(),
   body("email", "PLEASE INTRODUCE A VALID EMAIL")
     .trim()
-    .isLength({ min: 8 })
+    .isLength({ max: 50,min: 5})
     .escape(),
   body("username", "MIN USERNAME LENGTH IS 4")
     .trim()
-    .isLength({ min: 4 })
+    .isLength({ max: 50,min: 4 })
     .escape(),
   body("password", "MIN PASSWORD LENGTH IS 8")
     .trim()
-    .isLength({ min: 8 })
+    .isLength({ max: 50,min: 8 })
     .escape(),
   body(
     "confpassword",
@@ -31,7 +31,6 @@ exports.post = [
     .custom((value, { req }) => value === req.body.password),
 
   async (req, res, next) => {
-    console.log(req.body);
     const errors = validationResult(req);
     if (errors.isEmpty()) {
       let userUsername = await User.find({ username: req.body.username });
@@ -41,12 +40,11 @@ exports.post = [
         //if everything is ok
         let salt = bcrypt.genSaltSync(10);
         let password = bcrypt.hashSync(req.body.password, salt);
-        let username = bcrypt.hashSync(req.body.username, salt);
 
         newUser = new User({
           name: req.body.name,
           email: req.body.email,
-          username: username,
+          username: req.body.username,
           password: password,
           member_status: "user",
         });
