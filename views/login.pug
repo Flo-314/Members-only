@@ -13,14 +13,21 @@ block content
 
 
     .formContainer 
-      h1  Login into your account
-      form(method="post")
-
+    h1  Login into your account
+    form(method="post")
+     
       label(for="username") 
-      input(type="text" name="username" id="username" placeholder="username") 
-
+      input(type="text" name="username" id="username" placeholder="introduce your username")
+      
       label(for="password") 
-      input(type="password" id="password" name="password" placeholder="password")
-
+      input(type="password" id="password" name="password" placeholder="introduce your password")
+      
       input(type='submit' value='OK')
 
+      if errors 
+        for error in errors 
+          p=error.msg
+
+      
+
+      
