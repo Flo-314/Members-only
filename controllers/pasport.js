@@ -3,10 +3,8 @@ const User = require("../models/users");
 const bcrypt = require("bcryptjs");
 
 let strategy = new LocalStrategy((username, password, done) => {
-
   User.findOne({ username: username }, (err, user) => {
     if (err) {
-      
       return done(err);
     }
 
@@ -14,33 +12,16 @@ let strategy = new LocalStrategy((username, password, done) => {
       return done(null, false, { message: "Incorrect username" });
     }
 
-    bcrypt.compare(password, user.password, function(err, res) {
-      if(err){
-        done(err)
+    bcrypt.compare(password, user.password, function (err, res) {
+      if (err) {
+        done(err);
       }
-      if(res !== false){
-        return done(null, user)
-      }
-      else{
-        return done(null, false, { message: "Incorrect password" })
-      }
-
-});
-
-    console.log(user)
-    /* bcrypt.compareSync(password, user.password, (err, res) => {
-      console.log(res)
-      if (res) {
-        // passwords match! log user in
-        console.log("match")
-        return done(null, user)
+      if (res !== false) {
+        return done(null, user);
       } else {
-        // passwords do not match!
-        console.log("dont match")
-        return done(null, false, { message: "Incorrect password" })
-
+        return done(null, false, { message: "Incorrect password" });
       }
-    }) */
+    });
   });
 });
 

@@ -4,23 +4,25 @@ block content
   header
     #title
       h1
-      a(href='/') flo app
-    nav
-      h2
-      a(href='/log-in') Log-in
-      h2
-      a(href='/sign-up') Sign-Up
+        a(href='/') flo app
+      nav
+        h2 
+          a(href="/log-out") Log-Out 
+        h2 
+          a(href="/create-post") Create a Post 
+        h2 
+          a(href="/upgrade") Upgrade your member Status   
 
 
     .formContainer 
       h1  Create a post
       form(method="post")
 
-      label(for="title") 
-      input(type="text" name="title" id="title" placeholder="title") 
+        label(for="title") 
+        input(type="text" name="title" id="title" placeholder="title") 
 
-      label(for="content") 
-      input(type="text" id="content" name="content" placeholder="content")
-      input(type='submit' value='OK')
+        label(for="content") 
+        input(type="text" id="content" name="content" placeholder="content")
+        input(type='submit' value='OK')
 
 
