@@ -1,13 +1,23 @@
 extends layout
 block content
   header
+ 
+
     #title
       h1
-      a(href='/') flo app
+        a(href='/') flo app
     nav
+    if !user
       h2
       a(href='/log-in') Log-in
       h2
       a(href='/sign-up') Sign-Up
       if user 
         p=user 
+    else 
+      h2 
+        a(href="/log-out") Log-Out 
+      h2 
+        a(href="/createPost") Create a Post 
+      h2 
+        a(href="/upgrade") Upgrade your member Status   
