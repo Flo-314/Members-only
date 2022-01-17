@@ -21,3 +21,15 @@ block content
         a(href="/create-post") Create a Post 
       h2 
         a(href="/upgrade") Upgrade your member Status   
+    
+    #posts 
+    if posts 
+      for post in posts 
+        #postTop
+         h3=post.title
+         h4=post.user.username
+
+        p=post.content
+        p=post.timestamp
+
+        hr
