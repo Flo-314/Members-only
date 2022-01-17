@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 const { body, validationResult } = require("express-validator");
 const Message = require("../models/message");
+const { create } = require("../models/message");
 
 exports.index = (req, res, next) => {
   if (req.user) {
@@ -25,24 +26,31 @@ exports.post = [
 
     const errors = validationResult(req);
 
-    if (errors.isEmpty() && req.user) {
-      const newMsg = new Message({
-        title: req.body.title,
-        content: req.body.content,
-        user: req.user.id,
-        timestamp: new Date(),
-      });
-      newMsg.save((err) => {
-        if (err) {
-          return next(err);
-        }
-      });
+    if (
+      req.user.member_status === "member" ||
+      req.user.member_status === "admin"
+    ) {
+      if (errors.isEmpty()) {
+        const newMsg = new Message({
+          title: req.body.title,
+          content: req.body.content,
+          user: req.user.id,
+          timestamp: new Date(),
+        });
+        newMsg.save((err) => {
+          if (err) {
+            return next(err);
+          }
+        });
+      } else {
+        res.render("createPost", {
+          errors: errors.array(),
+        });
+      }
+      res.redirect("/");
     }
     else{
-        res.render("createPost", {
-            errors: errors.array(),
-          });
+      res.render("createPost",{errors: [{msg: "You are not a member/admin, u are not allowed to publish any post"}]})
     }
-    res.redirect("/")
   },
 ];

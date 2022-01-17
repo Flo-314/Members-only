@@ -16,7 +16,7 @@ block content
 
     .formContainer 
       h1  Upgrade to member
-      form(method="post" action="/upgradeMember") 
+      form(method="post" action="/upgrade/upgradeMember") 
 
         label(for="memberpassword") 
         input(type="password" name="memberpassword" id="memberpassword" placeholder="secret password") 
@@ -25,10 +25,12 @@ block content
 
       .formContainer 
         h1  Upgrade to admin
-        form(method="post" action="/upgradeAdmin") 
+        form(method="post" action="/upgrade/upgradeAdmin") 
 
           label(for="adminpassword") 
           input(type="password" name="adminpassword" id="adminpassword" placeholder="admin password") 
           input(type='submit' value='OK')
 
 
+    if error 
+      p=error

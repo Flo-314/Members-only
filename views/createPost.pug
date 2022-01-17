@@ -24,5 +24,7 @@ block content
         label(for="content") 
         input(type="text" id="content" name="content" placeholder="content")
         input(type='submit' value='OK')
-
-
+        
+      if errors 
+        for error in errors 
+          p=error.msg
