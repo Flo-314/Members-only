@@ -12,10 +12,19 @@ block content
         h2 
           a(href="/create-post") Create a Post 
         h2 
-          a(href="/upgrade") Upgrade your member Status
+          a(href="/upgrade") Profile Configuration   
     main
+      
+      .formContainer 
+        h1  Change your profile photo
+        form(method="post" action="/upgrade/changePhoto" enctype="multipart/form-data") 
+          input(type="file" name="profilePhoto"  accept="image/png, image/gif, image/jpeg")
+          input(type='submit' value='OK' )
+
+
       .formContainer 
         h1  Upgrade to member
+        p hint(The most hardest "password" but in mayús)
         form(method="post" action="/upgrade/upgradeMember") 
 
           label(for="memberpassword") 
@@ -25,6 +34,7 @@ block content
 
       .formContainer 
         h1  Upgrade to admin
+        p hint(the most hardest "drowssap" but in MAYÚS)
         form(method="post" action="/upgrade/upgradeAdmin") 
 
           label(for="adminpassword") 

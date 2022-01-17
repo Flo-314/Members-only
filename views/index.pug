@@ -18,7 +18,7 @@ block content
         h2 
           a(href="/create-post") Create a Post 
         h2 
-          a(href="/upgrade") Upgrade your member Status   
+          a(href="/upgrade") Profile Configuration   
   main
     h1.postTitle POSTS:
     #posts 
@@ -26,11 +26,11 @@ block content
         for post in posts
           .post
 
-            if user
-              if user.img
-                img(src='user.img').imageContainer
+
+            if post.user.image
+              img(src=post.user.image.src).imageContainer
             else
-            img(src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png").imageContainer
+              img(src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png").imageContainer
 
             .infoContainer
               h2=post.title

@@ -3,7 +3,12 @@ const { populate } = require("../models/message");
 const Post = require("../models/message");
 
 exports.index = async (req, res, next) => {
-  let posts = await Post.find({}).populate("user");
+  let posts = await Post.find({}).populate({
+    path : 'user',
+    populate : {
+      path : 'image'
+    }
+  });
 
   res.render("index", { posts: posts, user: req.user });
 };

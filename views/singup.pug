@@ -16,7 +16,7 @@ block content
     .formContainer 
       h1 Create your account!
 
-      form(method="post")
+      form(method="post" enctype="multipart/form-data")
 
         label(for="name") 
         input(type="text" placeholder="complete name" id="name" name="name")
@@ -33,8 +33,8 @@ block content
         label(for="confpassword") 
         input(type="password" name="confpassword" id="confpassword" placeholder="confirm your password")
 
-        input(type="file" name="profilePhoto")
-        input(type='submit' value='OK')
+        input(type="file" name="profilePhoto"  accept="image/png, image/gif, image/jpeg")
+        input(type='submit' value='OK' )
 
         if errors 
           for error in errors 

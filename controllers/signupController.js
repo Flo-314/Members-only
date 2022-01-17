@@ -1,6 +1,8 @@
 var mongoose = require("mongoose");
 const { body, validationResult } = require("express-validator");
 const User = require("../models/users");
+const Image = require("../models/image");
+
 var bcrypt = require("bcryptjs");
 
 exports.index = (req, res, next) => {
@@ -41,19 +43,35 @@ exports.post = [
         let salt = bcrypt.genSaltSync(10);
         let password = bcrypt.hashSync(req.body.password, salt);
 
+        let newImage = new Image({
+          name: req.file.fieldname,
+          desc: req.file.originalname,
+          img: {
+            data: req.file.buffer,
+            contentType: req.file.mimetype,
+          },
+        });
+      await    newImage.save((err) => {
+          if (err) {
+            return next(err);
+          }
+        });
+
         newUser = new User({
           name: req.body.name,
           email: req.body.email,
           username: req.body.username,
           password: password,
           member_status: "user",
+          image: newImage.id,
         });
 
-        newUser.save((err) => {
+      await   newUser.save((err) => {
           if (err) {
             return next(err);
           }
         });
+        res.redirect("log-in")
       }
       //si ya ESTA usado el mail o el username
       else {
