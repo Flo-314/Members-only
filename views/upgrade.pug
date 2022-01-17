@@ -1,18 +1,20 @@
 extends layout
 
 block content
-  header
-    #title
-      h1
-        a(href='/') flo app
+  main
+    header
+
+
+      #title
+        h1
+          a(href='/') flo app
       nav
         h2 
           a(href="/log-out") Log-Out 
         h2 
           a(href="/create-post") Create a Post 
         h2 
-          a(href="/upgrade") Upgrade your member Status   
-
+          a(href="/upgrade") Upgrade your member Status 
 
     .formContainer 
       h1  Upgrade to member
@@ -23,13 +25,13 @@ block content
         input(type='submit' value='OK')
 
 
-      .formContainer 
-        h1  Upgrade to admin
-        form(method="post" action="/upgrade/upgradeAdmin") 
+    .formContainer 
+      h1  Upgrade to admin
+      form(method="post" action="/upgrade/upgradeAdmin") 
 
-          label(for="adminpassword") 
-          input(type="password" name="adminpassword" id="adminpassword" placeholder="admin password") 
-          input(type='submit' value='OK')
+        label(for="adminpassword") 
+        input(type="password" name="adminpassword" id="adminpassword" placeholder="admin password") 
+        input(type='submit' value='OK')
 
 
     if error 

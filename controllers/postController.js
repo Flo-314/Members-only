@@ -21,9 +21,6 @@ exports.post = [
     .escape(),
 
   (req, res, next) => {
-    console.log(req.body);
-    console.log(req.user);
-
     const errors = validationResult(req);
 
     if (
@@ -35,7 +32,11 @@ exports.post = [
           title: req.body.title,
           content: req.body.content,
           user: req.user.id,
-          timestamp: new Date(),
+          timestamp: new Date()
+            .toISOString()
+            .replace("-", "/")
+            .split("T")[0]
+            .replace("-", "/"),
         });
         newMsg.save((err) => {
           if (err) {
@@ -48,9 +49,14 @@ exports.post = [
         });
       }
       res.redirect("/");
-    }
-    else{
-      res.render("createPost",{errors: [{msg: "You are not a member/admin, u are not allowed to publish any post"}]})
+    } else {
+      res.render("createPost", {
+        errors: [
+          {
+            msg: "You are not a member/admin, u are not allowed to publish any post",
+          },
+        ],
+      });
     }
   },
 ];
