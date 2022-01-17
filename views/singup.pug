@@ -12,37 +12,37 @@ block content
       a(href='/sign-up') Sign-Up
 
 
+  main 
+    .formContainer 
+      h1 Create your account!
 
-  .formContainer 
-    h1 Create your account!
+      form(method="post")
 
-    form(method="post")
-     
-      label(for="name") 
-      input(type="text" placeholder="complete name" id="name" name="name")
-      
-      label(for="email") 
-      input(type="mail" id="email" name="email" placeholder="introduce your email")
-    
-      label(for="username") 
-      input(type="text" name="username" id="username" placeholder="introduce your username")
-      
-      label(for="password") 
-      input(type="password" id="password" name="password" placeholder="introduce your password")
-      
-      label(for="confpassword") 
-      input(type="password" name="confpassword" id="confpassword" placeholder="confirm your password")
+        label(for="name") 
+        input(type="text" placeholder="complete name" id="name" name="name")
 
-      input(type="file" name="profilePhoto")
-      input(type='submit' value='OK')
+        label(for="email") 
+        input(type="mail" id="email" name="email" placeholder="introduce your email")
 
-      if errors 
-        for error in errors 
-          p=error.msg
+        label(for="username") 
+        input(type="text" name="username" id="username" placeholder="introduce your username")
 
-      
+        label(for="password") 
+        input(type="password" id="password" name="password" placeholder="introduce your password")
 
-      
+        label(for="confpassword") 
+        input(type="password" name="confpassword" id="confpassword" placeholder="confirm your password")
 
-      
-      
+        input(type="file" name="profilePhoto")
+        input(type='submit' value='OK')
+
+        if errors 
+          for error in errors 
+            p=error.msg
+
+
+
+
+
+
+

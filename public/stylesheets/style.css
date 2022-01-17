@@ -47,7 +47,6 @@ main {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   
 }
@@ -87,6 +86,7 @@ max-height: 45px;
 min-width: 42px;
 min-height: 42px;
 border-radius: 2em;
+justify-self: center;
 }
 .infoContainer{
   grid-area: info;
@@ -107,4 +107,20 @@ border-radius: 2em;
   grid-area: content;
 }
 
+.formContainer, form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.formContainer{
+  padding: 3em;
+}
+form{
+  padding: 0.5em;
+  gap: 0.2em;
+}
 
+form input{
+  width: 100%;
+}
