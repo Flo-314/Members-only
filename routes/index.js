@@ -5,6 +5,6 @@ var controller = require("../controllers/indexController")
 
 /* GET home page. */
 router.get('/', controller.index);
-
+router.post("/",controller.post)
 
 module.exports = router;

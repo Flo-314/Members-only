@@ -27,9 +27,17 @@ block content
       for post in posts 
         #postTop
          h3=post.title
-         h4=post.user.username
-
-        p=post.content
-        p=post.timestamp
+         if user
+           if user.member_status === "admin" || user.member_status === "member"
+            h4=post.user.username
+         else 
+          h4 USER(ANONYMOUS)
+        p=post.content  
+        p=post.timestamp 
+        if user 
+          if user.member_status === "admin"
+            form(method="post" )
+              input(type="text" name="postid" value=post.id class="hidden")
+              input(type='submit' value='DELETE POST')
 
         hr
