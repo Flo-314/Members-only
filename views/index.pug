@@ -1,27 +1,26 @@
 extends layout
 block content
+  header
+    #title
+      h1
+        a(href='/') Fló App
+    nav
+      if !user
+        h2
+        a(href='/log-in') Log-in
+        h2
+        a(href='/sign-up') Sign-Up
+        if user 
+          p=user 
+      else 
+        h2 
+          a(href="/log-out") Log-Out 
+        h2 
+          a(href="/create-post") Create a Post 
+        h2 
+          a(href="/upgrade") Upgrade your member Status   
   main
-    header
-
-
-      #title
-        h1
-          a(href='/') flo app
-      nav
-        if !user
-          h2
-          a(href='/log-in') Log-in
-          h2
-          a(href='/sign-up') Sign-Up
-          if user 
-            p=user 
-        else 
-          h2 
-            a(href="/log-out") Log-Out 
-          h2 
-            a(href="/create-post") Create a Post 
-          h2 
-            a(href="/upgrade") Upgrade your member Status   
+    h1.postTitle POSTS:
     #posts 
       if posts 
         for post in posts
@@ -44,17 +43,19 @@ block content
                 h3.profileName name(ANONYMOUS)
 
               if user
-                  if user.member_status === "admin" || user.member_status === "member"
-                    h4.profileUsername @ #{post.user.username}
-                  else 
-                    h4.profileUsername @username(ANONYMOUS)
-              else 
+                if user.member_status === "admin" || user.member_status === "member"
+                  h4.profileUsername @ #{post.user.username}
+                else 
                   h4.profileUsername @username(ANONYMOUS)
+              else 
+                h4.profileUsername @username(ANONYMOUS)
 
               h4.postDate=post.timestamp
             .contentContainer
               p.postContent=post.content
-
+              if !user
+                p.noUser to view members o create post you have to be a member
+              
             if user 
               if user.member_status === "admin"
                 .formContainer 

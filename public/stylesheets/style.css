@@ -28,18 +28,32 @@ button {
   line-height: 1.2rem;
   font-size: 0.9rem;
 }
+header{
+  background-color: rgba(10, 10, 10, 0.926);
 
+}
 nav{
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2em;
 }
-
+#title a{
+  text-decoration: none;
+}
 
 main {
   background-color: #050505;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+.postTitle{
+  padding: 0.5em;
+  color: #ff8a1d;
 }
 #posts {
   background-color: #0d0d0d;
@@ -47,7 +61,6 @@ main {
   max-width: 1350px;
   width: 80%;
   margin: 0 auto;
-  margin-top: 3em;
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
@@ -81,6 +94,11 @@ border-radius: 2em;
   align-items: center;
   font-size: 0.8rem;
   gap: 2em;
+}
+.noUser{
+  padding-top: 1em;
+  font-size: 0.7rem;
+  color: rgb(177, 177, 177);
 }
 .profileName, .profileUsername, .postDate{
   color: #929CA6;
