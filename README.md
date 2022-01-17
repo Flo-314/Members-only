@@ -1,2 +1,1 @@
-# Members-only
-project to keep practice node.js/express, databases, passport and other methods to protect passwrods and so.
+an app created with PUG(jadeJS), Express, NodeJS, Passport JS, CSS vanilla. The user experience/interface varies dependent on if a user is a non member, member, and admin.
